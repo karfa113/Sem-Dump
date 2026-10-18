@@ -135,6 +135,26 @@
      ]
     },
     {
+     "name": "Practicals",
+     "type": "folder",
+     "children": [
+      {
+       "name": "DSA Lab",
+       "type": "link",
+       "ext": "link",
+       "url": "https://github.com/Subhajitroy03/DSA-3rdSem-",
+       "mtime": 1792308288
+      },
+      {
+       "name": "Python Lab",
+       "type": "link",
+       "ext": "link",
+       "url": "https://github.com/Subhajitroy03/PCC-CS393",
+       "mtime": 1792308284
+      }
+     ]
+    },
+    {
      "name": "PYQ",
      "type": "folder",
      "children": [
@@ -147,13 +167,6 @@
        "path": "notes/Semester 3/PYQ/PYQ 25-26.pdf"
       }
      ]
-    },
-    {
-     "name": "Practicals",
-     "type": "link",
-     "ext": "link",
-     "url": "https://github.com/Subhajitroy03/DSA-3rdSem-",
-     "mtime": 1792307230
     }
    ]
   },
@@ -176,6 +189,26 @@
      ]
     },
     {
+     "name": "Practicals",
+     "type": "folder",
+     "children": [
+      {
+       "name": "CA Lab",
+       "type": "link",
+       "ext": "link",
+       "url": "https://github.com/Subhajitroy03/VHDL",
+       "mtime": 1792308357
+      },
+      {
+       "name": "DAA Lab",
+       "type": "link",
+       "ext": "link",
+       "url": "https://github.com/Subhajitroy03/DAA_4th-Sem",
+       "mtime": 1792308362
+      }
+     ]
+    },
+    {
      "name": "PYQ",
      "type": "folder",
      "children": [
@@ -188,13 +221,6 @@
        "path": "notes/Semester 4/PYQ/PYQ 25-26.pdf"
       }
      ]
-    },
-    {
-     "name": "Practicals",
-     "type": "link",
-     "ext": "link",
-     "url": "https://github.com/Subhajitroy03/DAA_4th-Sem",
-     "mtime": 1792307279
     }
    ]
   },
@@ -232,10 +258,16 @@
     },
     {
      "name": "Practicals",
-     "type": "link",
-     "ext": "link",
-     "url": "https://github.com/Subhajitroy03/OS-LAB",
-     "mtime": 1792307300
+     "type": "folder",
+     "children": [
+      {
+       "name": "OS Lab",
+       "type": "link",
+       "ext": "link",
+       "url": "https://github.com/Subhajitroy03/OS-LAB",
+       "mtime": 1792308395
+      }
+     ]
     }
    ]
   },
