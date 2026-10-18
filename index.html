@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sem Dump</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Shared icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="fBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b9eff"/><stop offset="1" stop-color="#1a6fe0"/>
+    </linearGradient>
+    <linearGradient id="fFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#2f8cf0"/>
+    </linearGradient>
+    <symbol id="i-folder" viewBox="0 0 120 100">
+      <path d="M8 14a8 8 0 0 1 8-8h27a8 8 0 0 1 6 2.7l5 5.6a8 8 0 0 0 6 2.7H104a8 8 0 0 1 8 8V82a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8z" fill="url(#fBack)"/>
+      <rect x="8" y="30" width="104" height="60" rx="8" fill="url(#fFront)"/>
+      <rect x="8" y="30" width="104" height="2" fill="#fff" opacity=".35"/>
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 100 120">
+      <path d="M14 6h50l24 24v78a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V12a6 6 0 0 1 6-6z" fill="#fff"/>
+      <path d="M64 6l24 24H70a6 6 0 0 1-6-6z" fill="#d9dde3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="stage">
+  <section class="window" id="win">
+
+    <aside class="sidebar">
+      <div class="lights">
+        <button class="light red" id="btnClose" title="Close preview"></button>
+        <button class="light yellow" id="btnHome" title="Home"></button>
+        <button class="light green" id="btnMax" title="Expand"></button>
+      </div>
+      <div class="side-label">Favorites</div>
+      <nav id="side"></nav>
+    </aside>
+
+    <div class="content">
+      <header class="toolbar">
+        <div class="nav">
+          <button class="tb" id="btnBack" title="Back" aria-label="Back">
+            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="tb" id="btnFwd" title="Forward" aria-label="Forward">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div class="title" id="title">Sem Dump</div>
+        <div class="tools">
+          <div class="seg">
+            <button class="tb" id="vGrid" title="Icons" aria-label="Icon view">
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+            </button>
+            <button class="tb" id="vList" title="List" aria-label="List view">
+              <svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+            </button>
+          </div>
+          <button class="btn-contrib" id="btnContrib" title="Contribute your notes">
+            <svg viewBox="0 0 24 24"><path d="M12 16V5M7 9l5-5 5 5M5 20h14"/></svg>
+            <span>Contribute</span>
+          </button>
+          <label class="search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg>
+            <input id="q" type="search" placeholder="Search all notes" autocomplete="off">
+          </label>
+        </div>
+      </header>
+
+      <div class="crumbs" id="crumbs"></div>
+
+      <div class="body" id="body"></div>
+
+      <footer class="status" id="status"></footer>
+
+      <!-- Contribute dialog -->
+      <div class="modal" id="contrib" hidden>
+        <div class="card" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+          <button class="tb close" id="cClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <h2 id="cTitle">Contribute your notes</h2>
+          <p class="lead">Got notes that could help others? Add them to the GitHub repo. You'll upload straight into <b id="cPath">Notes</b>.</p>
+          <ol>
+            <li>Sign in to GitHub (it's free).</li>
+            <li>Drag your files in and commit. GitHub will offer to fork the repo and open a pull request.</li>
+            <li>Once your pull request is approved, your notes appear here.</li>
+          </ol>
+          <p class="warn" id="cWarn" hidden>The GitHub repo isn't set up yet. Add your username and repo name in <code>config.js</code>.</p>
+          <div class="actions">
+            <a class="btn-dl" id="cUpload" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 16V5M7 9l5-5 5 5M5 20h14"/></svg>
+              Upload to this folder
+            </a>
+            <a class="btn-ghost" id="cRepo" target="_blank" rel="noopener">View repository</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Look style preview -->
+      <div class="preview" id="preview" hidden>
+        <div class="pv-bar">
+          <button class="tb" id="pvBack" aria-label="Close preview" title="Close (Esc)">
+            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <div class="pv-name" id="pvName"></div>
+          <div class="pv-actions">
+            <button class="tb" id="pvPrev" aria-label="Previous file" title="Previous (←)"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="tb" id="pvNext" aria-label="Next file" title="Next (→)"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            <a class="btn-dl" id="pvDl" download>
+              <svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+        <div class="pv-stage" id="pvStage"></div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
