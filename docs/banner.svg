@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-label="Sem Dump: a glassmorphic, Finder-style home for semester notes">
+  <defs>
+    <linearGradient id="fb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b9eff"/><stop offset="1" stop-color="#1a6fe0"/></linearGradient>
+    <linearGradient id="ff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#2f8cf0"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".04"/></linearGradient>
+    <linearGradient id="org" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a2b"/><stop offset="1" stop-color="#cc4c08"/></linearGradient>
+    <clipPath id="win"><rect x="190" y="40" width="900" height="296" rx="24"/></clipPath>
+    <g id="back"><path d="M8 14a8 8 0 0 1 8-8h27a8 8 0 0 1 6 2.7l5 5.6a8 8 0 0 0 6 2.7H104a8 8 0 0 1 8 8V82a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8z" fill="url(#fb)"/></g>
+    <g id="front"><rect x="8" y="30" width="104" height="60" rx="8" fill="url(#ff)"/><rect x="8" y="30" width="104" height="2" fill="#fff" opacity=".35"/></g>
+    <style>
+      .rise { transform-box: fill-box; transform-origin: center; animation: rise 9s cubic-bezier(.2,.8,.2,1) infinite both; }
+      .d1 { animation-delay: .1s } .d2 { animation-delay: .25s } .d3 { animation-delay: .4s } .d4 { animation-delay: .55s } .d5 { animation-delay: .7s }
+      @keyframes rise { 0% { opacity: 0; transform: translateY(22px) } 9%, 90% { opacity: 1; transform: none } 100% { opacity: 0; transform: none } }
+      .drop { animation: drop 9s cubic-bezier(.5,0,.3,1) infinite both; }
+      @keyframes drop { 0%, 26% { opacity: 0; transform: translate(0,-30px) rotate(-8deg) } 32% { opacity: 1; transform: translate(0,-22px) rotate(-8deg) } 46% { opacity: 1; transform: translate(0,14px) rotate(0) } 52%, 100% { opacity: 0; transform: translate(0,14px) } }
+      .bump { transform-box: fill-box; transform-origin: 50% 100%; animation: bump 9s ease-in-out infinite both; }
+      @keyframes bump { 0%, 44% { transform: scale(1) } 48% { transform: scale(1.06, .95) } 54%, 100% { transform: scale(1) } }
+      .sel { animation: pulse 9s ease-in-out infinite both; }
+      @keyframes pulse { 0%, 40% { opacity: .55 } 50% { opacity: 1 } 70%, 100% { opacity: .55 } }
+      .foot { animation: rise 9s cubic-bezier(.2,.8,.2,1) infinite both; animation-delay: .9s; transform-box: fill-box; transform-origin: center }
+      @media (prefers-reduced-motion: reduce) { .rise, .drop, .bump, .sel, .foot { animation: none; opacity: 1; transform: none } .drop { opacity: 0 } }
+    </style>
+  </defs>
+
+  <rect width="1280" height="420" fill="#000"/>
+
+  <!-- window -->
+  <rect x="190" y="40" width="900" height="296" rx="24" fill="url(#glass)" stroke="#fff" stroke-opacity=".16"/>
+  <path d="M214 41.5h852" stroke="#fff" stroke-opacity=".25" stroke-linecap="round"/>
+  <g clip-path="url(#win)">
+    <rect x="190" y="40" width="210" height="296" fill="#fff" fill-opacity=".05"/>
+    <path d="M400 40v296" stroke="#fff" stroke-opacity=".12"/>
+    <path d="M400 96h690" stroke="#fff" stroke-opacity=".12"/>
+  </g>
+  <!-- traffic lights (all the same size) -->
+  <circle cx="224" cy="70" r="6.5" fill="#ff5f57"/><circle cx="246" cy="70" r="6.5" fill="#febc2e"/><circle cx="268" cy="70" r="6.5" fill="#28c840"/>
+  <!-- sidebar -->
+  <rect x="210" y="104" width="170" height="30" rx="8" fill="#ff7a1a" fill-opacity=".28" stroke="#ff9646" stroke-opacity=".55"/>
+  <rect x="226" y="115" width="14" height="10" rx="2.5" fill="#4aa8ff"/><rect x="250" y="116" width="70" height="8" rx="4" fill="#fff" fill-opacity=".8"/>
+  <g fill="#fff">
+    <rect x="226" y="153" width="14" height="10" rx="2.5" fill="#4aa8ff"/><rect x="250" y="154" width="54" height="8" rx="4" fill-opacity=".45"/>
+    <rect x="226" y="185" width="14" height="10" rx="2.5" fill="#4aa8ff"/><rect x="250" y="186" width="62" height="8" rx="4" fill-opacity=".45"/>
+    <rect x="226" y="217" width="14" height="10" rx="2.5" fill="#4aa8ff"/><rect x="250" y="218" width="48" height="8" rx="4" fill-opacity=".45"/>
+    <rect x="226" y="249" width="14" height="10" rx="2.5" fill="#4aa8ff"/><rect x="250" y="250" width="58" height="8" rx="4" fill-opacity=".45"/>
+  </g>
+  <!-- toolbar -->
+  <rect x="424" y="58" width="22" height="22" rx="6" fill="#fff" fill-opacity=".1"/><rect x="452" y="58" width="22" height="22" rx="6" fill="#fff" fill-opacity=".1"/>
+  <rect x="500" y="64" width="90" height="10" rx="5" fill="#fff" fill-opacity=".85"/>
+  <rect x="780" y="57" width="100" height="26" rx="9" fill="#ff7a1a" fill-opacity=".28" stroke="#ff9646" stroke-opacity=".55"/>
+  <rect x="800" y="66" width="62" height="8" rx="4" fill="#fff" fill-opacity=".9"/>
+  <rect x="894" y="57" width="176" height="26" rx="9" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".18"/>
+  <circle cx="912" cy="70" r="5" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.6"/><rect x="926" y="66" width="70" height="8" rx="4" fill="#fff" fill-opacity=".3"/>
+
+  <!-- folders -->
+  <g transform="translate(436 140) scale(.95)">
+    <g class="rise d1"><use href="#back"/><use href="#front"/></g>
+  </g>
+  <g transform="translate(566 140) scale(.95)">
+    <g class="rise d2"><use href="#back"/><use href="#front"/></g>
+  </g>
+  <g transform="translate(696 140) scale(.95)">
+    <g class="rise d3">
+      <g class="bump">
+        <use href="#back"/>
+        <g class="drop">
+          <rect x="34" y="-6" width="52" height="64" rx="6" fill="#fff"/>
+          <rect x="34" y="40" width="52" height="12" fill="#ff5a1f"/>
+          <rect x="42" y="6" width="30" height="5" rx="2.5" fill="#ffb06b"/><rect x="42" y="17" width="22" height="5" rx="2.5" fill="#ffb06b"/>
+        </g>
+        <use href="#front"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(826 140) scale(.95)">
+    <g class="rise d4"><use href="#back"/><use href="#front"/></g>
+  </g>
+  <g transform="translate(956 140) scale(.95)">
+    <g class="rise d5"><use href="#back"/><use href="#front"/></g>
+  </g>
+  <!-- labels -->
+  <g fill="#fff" fill-opacity=".75">
+    <rect class="rise d1" x="468" y="246" width="44" height="8" rx="4"/><rect class="rise d2" x="598" y="246" width="44" height="8" rx="4"/>
+    <rect class="rise d3 sel" x="728" y="246" width="44" height="8" rx="4" fill="#ff7a1a" fill-opacity="1"/>
+    <rect class="rise d4" x="858" y="246" width="44" height="8" rx="4"/><rect class="rise d5" x="988" y="246" width="44" height="8" rx="4"/>
+  </g>
+  <rect x="520" y="286" width="240" height="8" rx="4" fill="#fff" fill-opacity=".14"/>
+
+  <!-- footer pill -->
+  <g class="foot">
+    <rect x="460" y="356" width="360" height="40" rx="20" fill="url(#glass)" stroke="#fff" stroke-opacity=".16"/>
+    <rect x="486" y="372" width="34" height="8" rx="4" fill="#fff" fill-opacity=".8"/><rect x="528" y="372" width="44" height="8" rx="4" fill="#fff" fill-opacity=".4"/>
+    <circle cx="610" cy="376" r="3" fill="#fff" fill-opacity=".3"/>
+    <rect x="634" y="364" width="96" height="24" rx="12" fill="url(#org)"/><rect x="652" y="372" width="60" height="8" rx="4" fill="#fff"/>
+    <circle cx="756" cy="376" r="6" fill="#fff" fill-opacity=".7"/><circle cx="778" cy="376" r="6" fill="#fff" fill-opacity=".7"/><circle cx="800" cy="376" r="6" fill="#fff" fill-opacity=".7"/>
+  </g>
+</svg>

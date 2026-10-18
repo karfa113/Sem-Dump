@@ -27,6 +27,100 @@
    "type": "folder",
    "children": [
     {
+     "name": "C Programming",
+     "type": "folder",
+     "children": [
+      {
+       "name": "Basic Algorithms.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 242387,
+       "mtime": 1792324769,
+       "path": "notes/Semester 2/C Programming/Basic Algorithms.pdf"
+      },
+      {
+       "name": "Extras.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 98583,
+       "mtime": 1792324797,
+       "path": "notes/Semester 2/C Programming/Extras.pdf"
+      },
+      {
+       "name": "File Handling.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 179516,
+       "mtime": 1792324802,
+       "path": "notes/Semester 2/C Programming/File Handling.pdf"
+      },
+      {
+       "name": "Functions.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 189761,
+       "mtime": 1792324775,
+       "path": "notes/Semester 2/C Programming/Functions.pdf"
+      },
+      {
+       "name": "Module 1- Introduction to Programming.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 270772,
+       "mtime": 1792324745,
+       "path": "notes/Semester 2/C Programming/Module 1- Introduction to Programming.pdf"
+      },
+      {
+       "name": "Module 2.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 193931,
+       "mtime": 1792324752,
+       "path": "notes/Semester 2/C Programming/Module 2.pdf"
+      },
+      {
+       "name": "Module 3.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 254059,
+       "mtime": 1792324758,
+       "path": "notes/Semester 2/C Programming/Module 3.pdf"
+      },
+      {
+       "name": "Module 4.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 202393,
+       "mtime": 1792324764,
+       "path": "notes/Semester 2/C Programming/Module 4.pdf"
+      },
+      {
+       "name": "Pointer.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 180616,
+       "mtime": 1792324784,
+       "path": "notes/Semester 2/C Programming/Pointer.pdf"
+      },
+      {
+       "name": "Recursion.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 192718,
+       "mtime": 1792324779,
+       "path": "notes/Semester 2/C Programming/Recursion.pdf"
+      },
+      {
+       "name": "Structure.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 144605,
+       "mtime": 1792324791,
+       "path": "notes/Semester 2/C Programming/Structure.pdf"
+      }
+     ]
+    },
+    {
      "name": "CA3",
      "type": "folder",
      "children": [
@@ -60,6 +154,60 @@
    "name": "Semester 3",
    "type": "folder",
    "children": [
+    {
+     "name": "Analog & Digital",
+     "type": "folder",
+     "children": [
+      {
+       "name": "LOGIC FAMILY_PART-I.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 478405,
+       "mtime": 1792325295,
+       "path": "notes/Semester 3/Analog & Digital/LOGIC FAMILY_PART-I.pdf"
+      },
+      {
+       "name": "LOGIC FAMILY_PART-II.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 643258,
+       "mtime": 1792325305,
+       "path": "notes/Semester 3/Analog & Digital/LOGIC FAMILY_PART-II.pdf"
+      },
+      {
+       "name": "LOGIC FAMILY_PART-III.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 696997,
+       "mtime": 1792325322,
+       "path": "notes/Semester 3/Analog & Digital/LOGIC FAMILY_PART-III.pdf"
+      },
+      {
+       "name": "LOGIC FAMILY_PART-IV.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 578880,
+       "mtime": 1792325340,
+       "path": "notes/Semester 3/Analog & Digital/LOGIC FAMILY_PART-IV.pdf"
+      },
+      {
+       "name": "Multivibrator.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 3436123,
+       "mtime": 1792325275,
+       "path": "notes/Semester 3/Analog & Digital/Multivibrator.pdf"
+      },
+      {
+       "name": "Power Amplifier ESC301_Study material.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 819430,
+       "mtime": 1792325285,
+       "path": "notes/Semester 3/Analog & Digital/Power Amplifier ESC301_Study material.pdf"
+      }
+     ]
+    },
     {
      "name": "CA3",
      "type": "folder",
@@ -135,6 +283,36 @@
      ]
     },
     {
+     "name": "Mathematics",
+     "type": "folder",
+     "children": [
+      {
+       "name": "Basics of Graph Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 535124,
+       "mtime": 1792325420,
+       "path": "notes/Semester 3/Mathematics/Basics of Graph Theory.pdf"
+      },
+      {
+       "name": "Matrix Representation of Graph.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 181542,
+       "mtime": 1792325434,
+       "path": "notes/Semester 3/Mathematics/Matrix Representation of Graph.pdf"
+      },
+      {
+       "name": "Tree.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 203779,
+       "mtime": 1792325446,
+       "path": "notes/Semester 3/Mathematics/Tree.pdf"
+      }
+     ]
+    },
+    {
      "name": "Practicals",
      "type": "folder",
      "children": [
@@ -151,6 +329,22 @@
        "ext": "link",
        "url": "https://github.com/Subhajitroy03/PCC-CS393",
        "mtime": 1792308284
+      },
+      {
+       "name": "Python viva Q&A  for PCA2.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 563729,
+       "mtime": 1792325158,
+       "path": "notes/Semester 3/Practicals/Python viva Q&A  for PCA2.pdf"
+      },
+      {
+       "name": "Python viva Q&A.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 354951,
+       "mtime": 1792325139,
+       "path": "notes/Semester 3/Practicals/Python viva Q&A.pdf"
       }
      ]
     },
@@ -175,6 +369,122 @@
    "type": "folder",
    "children": [
     {
+     "name": "Automata",
+     "type": "folder",
+     "children": [
+      {
+       "name": "Chomsky Classification of Grammars.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 574077,
+       "mtime": 1792325811,
+       "path": "notes/Semester 4/Automata/Chomsky Classification of Grammars.pdf"
+      },
+      {
+       "name": "Regular Expressions in Automata Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 544305,
+       "mtime": 1792325825,
+       "path": "notes/Semester 4/Automata/Regular Expressions in Automata Theory.pdf"
+      },
+      {
+       "name": "Universal Turing machine.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 145182,
+       "mtime": 1792325847,
+       "path": "notes/Semester 4/Automata/Universal Turing machine.pdf"
+      },
+      {
+       "name": "What are the decidable and undecidable problems in TOC.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 237681,
+       "mtime": 1792325838,
+       "path": "notes/Semester 4/Automata/What are the decidable and undecidable problems in TOC.pdf"
+      }
+     ]
+    },
+    {
+     "name": "Biology",
+     "type": "folder",
+     "children": [
+      {
+       "name": "BIOMOLECULES.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 955185,
+       "mtime": 1792326181,
+       "path": "notes/Semester 4/Biology/BIOMOLECULES.pdf"
+      },
+      {
+       "name": "CLASSIFICATION.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 299455,
+       "mtime": 1792326159,
+       "path": "notes/Semester 4/Biology/CLASSIFICATION.pdf"
+      },
+      {
+       "name": "ENZYMES.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 3068029,
+       "mtime": 1792326224,
+       "path": "notes/Semester 4/Biology/ENZYMES.pdf"
+      },
+      {
+       "name": "GENETICS.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 5365822,
+       "mtime": 1792326236,
+       "path": "notes/Semester 4/Biology/GENETICS.pdf"
+      },
+      {
+       "name": "INFORMATION TRANSFER.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 1149332,
+       "mtime": 1792326246,
+       "path": "notes/Semester 4/Biology/INFORMATION TRANSFER.pdf"
+      },
+      {
+       "name": "INTRODUCTION.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 213023,
+       "mtime": 1792326169,
+       "path": "notes/Semester 4/Biology/INTRODUCTION.pdf"
+      },
+      {
+       "name": "MACROMOLECULAR ANALYSIS.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 412126,
+       "mtime": 1792326190,
+       "path": "notes/Semester 4/Biology/MACROMOLECULAR ANALYSIS.pdf"
+      },
+      {
+       "name": "METABOLISM.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 920755,
+       "mtime": 1792326201,
+       "path": "notes/Semester 4/Biology/METABOLISM.pdf"
+      },
+      {
+       "name": "MICROBIOLOGY.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 521604,
+       "mtime": 1792326210,
+       "path": "notes/Semester 4/Biology/MICROBIOLOGY.pdf"
+      }
+     ]
+    },
+    {
      "name": "CA3",
      "type": "folder",
      "children": [
@@ -185,6 +495,242 @@
        "size": 3140549,
        "mtime": 1792298867,
        "path": "notes/Semester 4/CA3/CA3 - 2026.pdf"
+      }
+     ]
+    },
+    {
+     "name": "Computer Architecture",
+     "type": "folder",
+     "children": [
+      {
+       "name": "Addressing modes.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 613302,
+       "mtime": 1792326014,
+       "path": "notes/Semester 4/Computer Architecture/Addressing modes.pdf"
+      },
+      {
+       "name": "Arithmetic Pipeline.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 355211,
+       "mtime": 1792325956,
+       "path": "notes/Semester 4/Computer Architecture/Arithmetic Pipeline.pdf"
+      },
+      {
+       "name": "Array and Vector Processor.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 308789,
+       "mtime": 1792326081,
+       "path": "notes/Semester 4/Computer Architecture/Array and Vector Processor.pdf"
+      },
+      {
+       "name": "Belady's Anomaly.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 738440,
+       "mtime": 1792326046,
+       "path": "notes/Semester 4/Computer Architecture/Belady's Anomaly.pdf"
+      },
+      {
+       "name": "CA (C-access & S-access).pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 1363079,
+       "mtime": 1792326092,
+       "path": "notes/Semester 4/Computer Architecture/CA (C-access & S-access).pdf"
+      },
+      {
+       "name": "Cache Mapping-CSE.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 873519,
+       "mtime": 1792325988,
+       "path": "notes/Semester 4/Computer Architecture/Cache Mapping-CSE.pdf"
+      },
+      {
+       "name": "Cache Replacement.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 147891,
+       "mtime": 1792326000,
+       "path": "notes/Semester 4/Computer Architecture/Cache Replacement.pdf"
+      },
+      {
+       "name": "Cluster computer, systolic architecture, dataflow computer.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 2224837,
+       "mtime": 1792326105,
+       "path": "notes/Semester 4/Computer Architecture/Cluster computer, systolic architecture, dataflow computer.pdf"
+      },
+      {
+       "name": "Flynn’S Classifications.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 693905,
+       "mtime": 1792325913,
+       "path": "notes/Semester 4/Computer Architecture/Flynn’S Classifications.pdf"
+      },
+      {
+       "name": "Instruction Pipeline.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 427620,
+       "mtime": 1792325947,
+       "path": "notes/Semester 4/Computer Architecture/Instruction Pipeline.pdf"
+      },
+      {
+       "name": "Interconnection networks.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 622625,
+       "mtime": 1792326069,
+       "path": "notes/Semester 4/Computer Architecture/Interconnection networks.pdf"
+      },
+      {
+       "name": "Introduction of Pipelining.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 968184,
+       "mtime": 1792325925,
+       "path": "notes/Semester 4/Computer Architecture/Introduction of Pipelining.pdf"
+      },
+      {
+       "name": "Page Replacement.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 328474,
+       "mtime": 1792326035,
+       "path": "notes/Semester 4/Computer Architecture/Page Replacement.pdf"
+      },
+      {
+       "name": "Parallel Computers.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 421220,
+       "mtime": 1792326058,
+       "path": "notes/Semester 4/Computer Architecture/Parallel Computers.pdf"
+      },
+      {
+       "name": "Performance measuring.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 400895,
+       "mtime": 1792325901,
+       "path": "notes/Semester 4/Computer Architecture/Performance measuring.pdf"
+      },
+      {
+       "name": "Reservation Table.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 1208003,
+       "mtime": 1792325936,
+       "path": "notes/Semester 4/Computer Architecture/Reservation Table.pdf"
+      },
+      {
+       "name": "Virtual Memory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 730486,
+       "mtime": 1792326024,
+       "path": "notes/Semester 4/Computer Architecture/Virtual Memory.pdf"
+      }
+     ]
+    },
+    {
+     "name": "Discrete Mathematics",
+     "type": "folder",
+     "children": [
+      {
+       "name": "1. Basics of Graph Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 535124,
+       "mtime": 1792325654,
+       "path": "notes/Semester 4/Discrete Mathematics/1. Basics of Graph Theory.pdf"
+      },
+      {
+       "name": "2. Tree.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 203779,
+       "mtime": 1792325666,
+       "path": "notes/Semester 4/Discrete Mathematics/2. Tree.pdf"
+      },
+      {
+       "name": "3. Dijkstra's Algorithm.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 241263,
+       "mtime": 1792325675,
+       "path": "notes/Semester 4/Discrete Mathematics/3. Dijkstra's Algorithm.pdf"
+      },
+      {
+       "name": "4. Cut Set & Articulation Points.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 141302,
+       "mtime": 1792325687,
+       "path": "notes/Semester 4/Discrete Mathematics/4. Cut Set & Articulation Points.pdf"
+      },
+      {
+       "name": "5. Planar & Dual Graphs.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 158822,
+       "mtime": 1792325697,
+       "path": "notes/Semester 4/Discrete Mathematics/5. Planar & Dual Graphs.pdf"
+      },
+      {
+       "name": "6. Matrix Representation of Graph.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 181542,
+       "mtime": 1792325707,
+       "path": "notes/Semester 4/Discrete Mathematics/6. Matrix Representation of Graph.pdf"
+      },
+      {
+       "name": "7. Graph Colouring.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 275667,
+       "mtime": 1792325717,
+       "path": "notes/Semester 4/Discrete Mathematics/7. Graph Colouring.pdf"
+      },
+      {
+       "name": "Division Algo.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 116816,
+       "mtime": 1792325643,
+       "path": "notes/Semester 4/Discrete Mathematics/Division Algo.pdf"
+      },
+      {
+       "name": "Group(2).pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 191870,
+       "mtime": 1792325756,
+       "path": "notes/Semester 4/Discrete Mathematics/Group(2).pdf"
+      },
+      {
+       "name": "predicate calculus.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 100085,
+       "mtime": 1792325734,
+       "path": "notes/Semester 4/Discrete Mathematics/predicate calculus.pdf"
+      },
+      {
+       "name": "Rule of Inference.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 160104,
+       "mtime": 1792325744,
+       "path": "notes/Semester 4/Discrete Mathematics/Rule of Inference.pdf"
       }
      ]
     },

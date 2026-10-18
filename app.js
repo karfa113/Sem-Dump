@@ -287,6 +287,93 @@ $('#cClose').addEventListener('click', closeContrib);
 $('#contrib').addEventListener('click', (e) => { if (e.target.id === 'contrib') closeContrib(); });
 ['#cUpload', '#cRepo'].forEach((id) => $(id).addEventListener('click', (e) => { if ($(id).getAttribute('href') === '#') e.preventDefault(); }));
 
+/* ───────── stats pill ───────── */
+function treeStats(node) {
+  const s = { files: 0, folders: 0, links: 0, size: 0, latest: 0 };
+  (function walk(n) {
+    for (const c of n.children || []) {
+      if (c.type === 'folder') { s.folders++; walk(c); }
+      else if (c.type === 'link') { s.links++; s.latest = Math.max(s.latest, c.mtime || 0); }
+      else { s.files++; s.size += c.size || 0; s.latest = Math.max(s.latest, c.mtime || 0); }
+    }
+  })(node);
+  return s;
+}
+
+function countUp(el, to) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || to < 2) { el.textContent = to; return; }
+  const t0 = performance.now(), dur = 900;
+  (function tick(now) {
+    const k = Math.min(1, (now - t0) / dur);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+async function githubStats(cfg) {
+  const key = 'gh-stats-' + cfg.githubUser + '/' + cfg.repo;
+  try {
+    const c = JSON.parse(localStorage.getItem(key) || 'null');
+    if (c && Date.now() - c.t < 3600e3) return c.v;
+  } catch {}
+  const base = 'https://api.github.com/repos/' + encodeURIComponent(cfg.githubUser) + '/' + encodeURIComponent(cfg.repo);
+  const repo = await fetch(base);
+  if (!repo.ok) throw new Error('github ' + repo.status);
+  const rj = await repo.json();
+  let contributors = null;
+  try {
+    const cr = await fetch(base + '/contributors?per_page=1&anon=1');
+    if (cr.ok) {
+      const m = /[?&]page=(\d+)>;\s*rel="last"/.exec(cr.headers.get('link') || '');
+      contributors = m ? +m[1] : (await cr.json()).length;
+    }
+  } catch {}
+  const v = { stars: rj.stargazers_count, forks: rj.forks_count, contributors };
+  try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), v })); } catch {}
+  return v;
+}
+
+function renderStats() {
+  if (!root) return;
+  let box = $('#stats');
+  if (!box) {                       // older index.html: build the spot ourselves
+    box = document.createElement('div');
+    box.className = 'credit stats'; box.id = 'stats';
+    let foot = $('.foot');
+    if (!foot) {
+      foot = document.createElement('div'); foot.className = 'foot';
+      const cr = $('#credit');
+      if (cr && cr.parentNode) { cr.parentNode.insertBefore(foot, cr); foot.appendChild(cr); }
+      else ($('.stage') || document.body).appendChild(foot);
+    }
+    foot.insertBefore(box, foot.firstChild);
+  }
+  const s = treeStats(root);
+  const chip = (id, n, label, opt) => '<span class="chip' + (opt ? ' opt' : '') + '"><b id="' + id + '">0</b>' + label + '</span>';
+  box.innerHTML =
+    chip('stFiles', 0, s.files === 1 ? 'file' : 'files') +
+    chip('stFolders', 0, s.folders === 1 ? 'folder' : 'folders', true) +
+    (s.links ? chip('stLinks', 0, s.links === 1 ? 'link' : 'links', true) : '') +
+    '<span class="chip opt"><b>' + fmtSize(s.size) + '</b>of notes</span>' +
+    (s.latest ? '<span class="chip opt">updated <b>' + fmtDate(s.latest) + '</b></span>' : '') +
+    '<span id="stGh"></span>' +
+    '<button class="btn-contrib" id="btnContrib2"><svg viewBox="0 0 24 24"><path d="M12 16V5M7 9l5-5 5 5M5 20h14"/></svg><span>Contribute</span></button>';
+  box.hidden = false;
+  countUp($('#stFiles'), s.files); countUp($('#stFolders'), s.folders);
+  if (s.links) countUp($('#stLinks'), s.links);
+  $('#btnContrib2').addEventListener('click', openContrib);
+
+  const cfg = window.NOTES_CONFIG || {};
+  if (cfg.githubUser && cfg.repo && !/^YOUR_/.test(cfg.githubUser + cfg.repo)) {
+    githubStats(cfg).then((g) => {
+      const star = '<svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>';
+      $('#stGh').innerHTML =
+        '<span class="chip">' + star + '<b>' + g.stars + '</b>' + (g.stars === 1 ? 'star' : 'stars') + '</span>' +
+        (g.contributors ? ' <span class="chip opt"><b>' + g.contributors + '</b>' + (g.contributors === 1 ? 'contributor' : 'contributors') + '</span>' : '');
+    }).catch(() => {});
+  }
+}
+
 /* ───────── built-by bar ───────── */
 (function renderCredit() {
   const p = window.NOTES_PROFILE;
@@ -322,6 +409,7 @@ $('#contrib').addEventListener('click', (e) => { if (e.target.id === 'contrib') 
     if (!r.ok) throw new Error(r.status);
     root = await r.json();
     render();
+    renderStats();
   } catch (err) {
     $('#body').innerHTML = '<div class="empty"><div><b>Couldn’t load notes</b>manifest.json is missing. Run <code>python3 update.py</code>,<br>and open the site through a web server (not by double-clicking the file).</div></div>';
   }

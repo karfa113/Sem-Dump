@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 6" width="1000" height="6" role="presentation">
+  <defs>
+    <linearGradient id="sweep" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="0">
+      <stop offset="0" stop-color="#ff7a1a" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#ff9a4a"/>
+      <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="-360 0" to="1000 0" dur="3.2s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  <rect y="2" width="1000" height="2" rx="1" fill="#fff" fill-opacity=".12"/>
+  <rect y="1" width="1000" height="4" rx="2" fill="url(#sweep)"/>
+</svg>
