@@ -30,15 +30,18 @@ body {
 
 .stage {
   height: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   padding: clamp(8px, 2vw, 28px);
 }
 
 /* ───────── Window ───────── */
 .window {
   width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
   max-width: 2200px;
   display: flex;
   border-radius: var(--radius);
@@ -55,6 +58,7 @@ body {
 }
 /* green light = fullscreen */
 .stage:has(.window.max) { padding: 0; }
+.stage:has(.window.max) .credit { display: none; }
 .window.max { max-width: none; border-radius: 0; }
 @keyframes pop { from { opacity: 0; transform: scale(.97) translateY(8px); } }
 
@@ -267,8 +271,8 @@ body {
 /* ───────── Small screens ───────── */
 @media (max-width: 760px) {
   body { overflow: auto; }
-  .stage { padding: 10px; }
-  .window { flex-direction: column; height: calc(100dvh - 20px); }
+  .stage { padding: 10px; height: 100dvh; }
+  .window { flex-direction: column; flex: 1 1 auto; min-height: 0; }
   .sidebar {
     width: 100%; flex-direction: row; align-items: center; gap: 6px;
     padding: 10px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .14);
@@ -338,3 +342,25 @@ body {
   text-align: center; font-size: 22px; font-weight: 700; color: #2f8cf0; line-height: 1;
 }
 .mini-doc.link { box-shadow: inset 0 -6px 0 #2f8cf0; }
+
+/* ───────── Built-by bar ───────── */
+.credit {
+  flex: none; display: flex; align-items: center; gap: 12px;
+  padding: 5px 6px 5px 18px; border-radius: 999px;
+  font-size: 13px; color: var(--text-dim);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .04));
+  border: 1px solid rgba(255, 255, 255, .15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px);
+}
+.credit[hidden] { display: none; }
+.credit b { color: #fff; font-weight: 600; }
+.credit .sep { width: 1px; height: 16px; background: rgba(255, 255, 255, .22); }
+.credit .links { display: flex; gap: 2px; }
+.credit a {
+  width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
+  color: rgba(255, 255, 255, .8); transition: background .15s, color .15s, transform .15s;
+}
+.credit a:hover { background: #cc4c08; color: #fff; transform: translateY(-1px); }
+.credit svg { width: 16px; height: 16px; }
+.credit:not(:has(.links)) { padding-right: 18px; }

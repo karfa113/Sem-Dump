@@ -28,6 +28,14 @@ notes/Sem1/Maths/Lecture playlist.url   →   contains:  https://youtube.com/pla
 
 The file name becomes the label (without `.url`). Run `python3 update.py` and it appears as a link icon; clicking it opens the site in a new tab. On GitHub use *Add file → Create new file*, type the name with `.url` at the end, paste the address, and commit. Files ending in `.link` work the same way.
 
+## The "Built by" bar
+
+Edit `profile.js` with your name and usernames. Empty fields hide that icon:
+
+```js
+window.NOTES_PROFILE = { name: "Your Name", instagram: "yourhandle", linkedin: "your-linkedin-id", github: "yourusername", email: "" };
+```
+
 ## Letting others contribute
 
 The **Contribute** button opens GitHub's upload page for the folder the visitor is looking at. Visitors without write access are asked to fork the repo and open a pull request, so nothing goes live until you merge it (the workflow then rebuilds the index automatically).
