@@ -6,6 +6,10 @@ Rebuilds manifest.json from whatever is inside the notes/ folder.
   python3 update.py --serve   rebuild, then preview at http://localhost:8000
 
 Folders Sem1..Sem8 are always created, so they show up even when empty.
+
+Links: a file ending in .url or .link whose content is a web address
+(e.g. "Maths playlist.url" containing https://youtube.com/...) shows up as a
+clickable link that opens in a new tab.
 Names starting with "." (like .gitkeep or .DS_Store) are ignored.
 """
 import json
@@ -15,11 +19,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 NOTES = ROOT / "notes"
-SEMESTERS = [f"Semester {i}" for i in range(1, 9)]
+SEMESTERS = [f"Sem{i}" for i in range(1, 9)]
 
 
 def natural(name: str):
     return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", name)]
+
+
+LINK_EXTS = {".url", ".link"}
+URL_RE = re.compile(r"https?://[^\s\"'<>]+", re.IGNORECASE)
+
+
+def read_link(p: Path):
+    """Return the first http(s) URL inside a .url/.link file, or None."""
+    try:
+        m = URL_RE.search(p.read_text(encoding="utf-8", errors="ignore"))
+    except OSError:
+        return None
+    return m.group(0) if m else None
 
 
 def scan(folder: Path) -> list:
@@ -29,6 +46,14 @@ def scan(folder: Path) -> list:
     for p in entries:
         if p.is_dir():
             out.append({"name": p.name, "type": "folder", "children": scan(p)})
+        elif p.suffix.lower() in LINK_EXTS and read_link(p):
+            out.append({
+                "name": p.stem,
+                "type": "link",
+                "ext": "link",
+                "url": read_link(p),
+                "mtime": int(p.stat().st_mtime),
+            })
         else:
             st = p.stat()
             out.append({

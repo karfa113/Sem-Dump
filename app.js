@@ -15,7 +15,8 @@ let selected = null;
 /* ───────── helpers ───────── */
 const enc = (p) => p.split('/').map(encodeURIComponent).join('/');
 const kind = (ext) =>
-  ext === 'pdf' ? 'pdf'
+  ext === 'link' ? 'link'
+  : ext === 'pdf' ? 'pdf'
   : ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif'].includes(ext) ? 'img'
   : ['txt', 'md', 'csv', 'log'].includes(ext) ? 'txt'
   : 'other';
@@ -51,6 +52,7 @@ function render() {
   let segs = segsFromHash();
   let hit = resolve(segs);
   if (!hit) { go([]); return; }
+  if (hit.node.type === 'link') { go(segs.slice(0, -1)); return; }
 
   let folderSegs = segs, file = null;
   if (hit.node.type === 'file') { file = hit.node; folderSegs = segs.slice(0, -1); }
@@ -123,7 +125,7 @@ function renderItems(folder, folderSegs) {
 
   if (view === 'grid') {
     body.innerHTML = '<div class="grid">' + items.map((it, i) =>
-      '<button class="item" style="animation-delay:' + Math.min(i * 18, 300) + 'ms" data-i="' + i + '" title="' + esc(it._where ? it._where + ' / ' + it.name : it.name) + '">' +
+      '<button class="item" style="animation-delay:' + Math.min(i * 18, 300) + 'ms" data-i="' + i + '" title="' + esc(it.type === 'link' ? it.url : (it._where ? it._where + ' / ' + it.name : it.name)) + '">' +
         '<div class="ico">' + iconFor(it) + '</div>' +
         '<div class="name">' + esc(it.name) + '</div>' +
         (query && it._where ? '<div class="sub">' + esc(it._where) + '</div>' : '') +
@@ -132,7 +134,7 @@ function renderItems(folder, folderSegs) {
     body.innerHTML = '<div class="list"><div class="head"><span>Name</span><span>Size</span><span>Date Modified</span></div>' + items.map((it, i) =>
       '<div class="row" style="animation-delay:' + Math.min(i * 12, 240) + 'ms" data-i="' + i + '">' +
         '<div class="nm">' + miniFor(it) + '<span>' + esc(it.name) + '</span></div>' +
-        '<span class="dim">' + (it.type === 'folder' ? '—' : fmtSize(it.size || 0)) + '</span>' +
+        '<span class="dim">' + (it.type === 'folder' ? '—' : it.type === 'link' ? 'Link' : fmtSize(it.size || 0)) + '</span>' +
         '<span class="dim">' + fmtDate(it.mtime) + '</span>' +
       '</div>').join('') + '</div>';
   }
@@ -181,7 +183,13 @@ async function renderPreview(file, folder) {
 /* ───────── events ───────── */
 const isTouch = matchMedia('(pointer: coarse)').matches;
 
-function openItem(it) { go(it._segs); }
+function openItem(it) {
+  if (it.type === 'link') {
+    if (/^https?:\/\//i.test(it.url)) window.open(it.url, '_blank', 'noopener,noreferrer');
+    return;
+  }
+  go(it._segs);
+}
 
 $('#body').addEventListener('click', (e) => {
   const el = e.target.closest('[data-i]');
