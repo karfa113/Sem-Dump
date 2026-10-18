@@ -205,6 +205,14 @@
        "size": 819430,
        "mtime": 1792325285,
        "path": "notes/Semester 3/Analog & Digital/Power Amplifier ESC301_Study material.pdf"
+      },
+      {
+       "name": "Sequential Circuit.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 5568118,
+       "mtime": 1792332305,
+       "path": "notes/Semester 3/Analog & Digital/Sequential Circuit.pdf"
       }
      ]
     },
@@ -709,12 +717,36 @@
        "path": "notes/Semester 4/Discrete Mathematics/Division Algo.pdf"
       },
       {
+       "name": "Graph Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 2374554,
+       "mtime": 1792332183,
+       "path": "notes/Semester 4/Discrete Mathematics/Graph Theory.pdf"
+      },
+      {
+       "name": "Group Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 5047032,
+       "mtime": 1792332210,
+       "path": "notes/Semester 4/Discrete Mathematics/Group Theory.pdf"
+      },
+      {
        "name": "Group(2).pdf",
        "type": "file",
        "ext": "pdf",
        "size": 191870,
        "mtime": 1792325756,
        "path": "notes/Semester 4/Discrete Mathematics/Group(2).pdf"
+      },
+      {
+       "name": "Logic.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 5201107,
+       "mtime": 1792332231,
+       "path": "notes/Semester 4/Discrete Mathematics/Logic.pdf"
       },
       {
        "name": "predicate calculus.pdf",
@@ -731,6 +763,14 @@
        "size": 160104,
        "mtime": 1792325744,
        "path": "notes/Semester 4/Discrete Mathematics/Rule of Inference.pdf"
+      },
+      {
+       "name": "Set Theory.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 7416427,
+       "mtime": 1792332261,
+       "path": "notes/Semester 4/Discrete Mathematics/Set Theory.pdf"
       }
      ]
     },
