@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 NOTES = ROOT / "notes"
-SEMESTERS = [f"Sem{i}" for i in range(1, 9)]
+SEMESTERS = [f"Semester {i}" for i in range(1, 9)]
 
 
 def natural(name: str):
