@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://YOUR_USERNAME.github.io/YOUR_REPO/"><b>Open the site</b></a> &nbsp;·&nbsp;
+  <a href="https://karfa113.github.io/Sem-Dump/#/"><b>Open the site</b></a> &nbsp;·&nbsp;
   <a href="#contribute-your-notes">Contribute notes</a> &nbsp;·&nbsp;
   <a href="#set-up-your-own-copy">Set up your own</a> &nbsp;·&nbsp;
   <a href="#troubleshooting">Troubleshooting</a>
@@ -20,11 +20,10 @@
   <img alt="Static site" src="https://img.shields.io/badge/static_site-HTML_%2B_CSS_%2B_JS-ff7a1a?style=flat-square">
   <img alt="No build step" src="https://img.shields.io/badge/build_step-none-1a1a1a?style=flat-square&labelColor=1a1a1a&color=ff7a1a">
   <img alt="Pull requests welcome" src="https://img.shields.io/badge/PRs-welcome-ff7a1a?style=flat-square">
-  <img alt="Stars" src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO?style=flat-square&color=ff7a1a&labelColor=1a1a1a">
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/YOUR_USERNAME/YOUR_REPO?style=flat-square&color=ff7a1a&labelColor=1a1a1a">
+  <img alt="Stars" src="https://img.shields.io/github/stars/karfa113/Sem-Dump?style=flat-square&color=ff7a1a&labelColor=1a1a1a">
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/karfa113/Sem-Dump?style=flat-square&color=ff7a1a&labelColor=1a1a1a">
 </p>
 
-> **Note:** replace `YOUR_USERNAME` and `YOUR_REPO` in this file with your own GitHub details. Find and replace works well, and it makes the links and badges above come alive.
 
 <img src="docs/divider.svg" alt="" width="100%">
 
