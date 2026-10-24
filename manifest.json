@@ -868,6 +868,20 @@
        "mtime": 1792308395
       }
      ]
+    },
+    {
+     "name": "Software Engineering",
+     "type": "folder",
+     "children": [
+      {
+       "name": "WCA_Software.pdf",
+       "type": "file",
+       "ext": "pdf",
+       "size": 2254989,
+       "mtime": 1792808964,
+       "path": "notes/Semester 5/Software Engineering/WCA_Software.pdf"
+      }
+     ]
     }
    ]
   },
