@@ -114,7 +114,7 @@ body {
   padding: 12px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, .14);
 }
-.nav, .seg { display: flex; gap: 2px; }
+.nav { display: flex; gap: 2px; }
 .tb {
   width: 32px; height: 28px; border-radius: 8px;
   display: grid; place-items: center;
@@ -123,9 +123,6 @@ body {
 .tb svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .tb:hover { background: rgba(255, 255, 255, .16); }
 .tb:disabled { opacity: .3; cursor: default; background: none; }
-.seg { background: rgba(255, 255, 255, .1); border-radius: 9px; padding: 2px; }
-.seg .tb { width: 30px; height: 24px; border-radius: 7px; }
-.seg .tb.on { background: rgba(255, 255, 255, .26); }
 
 .title { font-weight: 600; font-size: 14px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tools { display: flex; align-items: center; gap: 10px; }
@@ -207,26 +204,6 @@ body {
 .doc.txt .tag { background: #6b7280; }
 .thumb { width: 66px; height: 66px; object-fit: cover; border-radius: 8px; border: 2px solid #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, .3); background: rgba(255, 255, 255, .2); }
 
-/* List view */
-.list { display: flex; flex-direction: column; }
-.list .head, .list .row {
-  display: grid; grid-template-columns: 1fr 90px 150px; gap: 12px; align-items: center;
-  padding: 6px 10px; font-size: 13px;
-}
-.list .head { font-size: 11.5px; font-weight: 600; color: var(--text-dim); border-bottom: 1px solid rgba(255, 255, 255, .15); }
-.list .row { border-radius: 8px; cursor: pointer; animation: fade .25s both; }
-.list .row:nth-child(even) { background: rgba(255, 255, 255, .04); }
-.list .row:hover { background: rgba(255, 255, 255, .1); }
-.list .row.sel { background: var(--accent); }
-.list .nm { display: flex; align-items: center; gap: 9px; min-width: 0; }
-.list .nm span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.list .nm .mini { width: 22px; height: 20px; flex: none; }
-.list .dim { color: var(--text-dim); }
-.list .row.sel .dim { color: rgba(255, 255, 255, .85); }
-.mini-doc { width: 16px; height: 20px; border-radius: 3px 5px 3px 3px; background: #fff; position: relative; flex: none; margin: 0 3px; }
-.mini-doc.pdf { box-shadow: inset 0 -6px 0 #ff5a1f; }
-.mini-doc.img { box-shadow: inset 0 -6px 0 #ff9f1c; }
-.mini-doc.txt { box-shadow: inset 0 -6px 0 #6b7280; }
 
 .empty { height: 100%; display: grid; place-items: center; text-align: center; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
 .empty b { display: block; font-size: 16px; color: var(--text); margin-bottom: 4px; }
@@ -291,8 +268,6 @@ body {
   .toolbar { gap: 8px; }
   .tools { flex: 1; justify-content: flex-end; }
   .search { width: 100%; max-width: 190px; }
-  .list .head, .list .row { grid-template-columns: 1fr 70px; }
-  .list .head span:last-child, .list .row span:last-child { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
@@ -382,3 +357,23 @@ body {
   .stats .chip.opt { display: none; }
   .credit.stats { gap: 10px; padding-left: 14px; }
 }
+
+/* ───────── mobile PDF viewer ───────── */
+.pv-stage:has(.pdfv) { padding: 0; display: block; overflow: hidden; position: relative; }
+.pdfv { position: absolute; inset: 0; display: flex; flex-direction: column; min-width: 0; }
+.pdfv-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; background: rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.1); }
+.pdfv-count { font-size: 13px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.pdfv-tools { display: flex; gap: 6px; }
+.pdfv-btn { min-width: 40px; height: 34px; padding: 0 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: var(--text); font-size: 17px; line-height: 1; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.pdfv-fit { font-size: 13px; font-weight: 600; }
+.pdfv-btn:active { background: #cc4c08; border-color: #cc4c08; }
+.pdfv-scroll { flex: 1; min-height: 0; min-width: 0; overflow: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: 8px; outline: none; touch-action: pan-x pan-y; }
+.pdfv-pages { display: flex; flex-direction: column; gap: 10px; margin: 0 auto; will-change: transform; }
+.pdfv-page { position: relative; background: #fff; border-radius: 4px; box-shadow: 0 6px 22px rgba(0,0,0,.45); overflow: hidden; flex: none; }
+.pdfv-page canvas { display: block; position: absolute; inset: 0; }
+.pdfv-n { position: absolute; inset: 0; display: grid; place-items: center; font-size: 42px; font-weight: 700; color: #00000018; }
+.pdfv-page.done .pdfv-n { display: none; }
+.pdfv-bgbar { height: 3px; background: rgba(255,255,255,.08); }
+.pdfv-bgbar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s linear; }
+.pdfv-toast { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); background: rgba(20,20,20,.92); border: 1px solid rgba(255,255,255,.16); color: var(--text); font-size: 13px; padding: 8px 14px; border-radius: 999px; pointer-events: none; }
+.nofile .btn-dl { text-decoration: none; padding: 10px 18px; border-radius: 10px; color: #fff; }

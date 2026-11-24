@@ -8,7 +8,6 @@ const FOLDER = '<svg class="folder"><use href="#i-folder"/></svg>';
 const MINI_FOLDER = '<svg class="mini"><use href="#i-folder"/></svg>';
 
 let root = null;
-let view = localStorage.getItem('notes-view') || 'grid';
 let query = '';
 let selected = null;
 
@@ -26,11 +25,15 @@ const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>
 
 function segsFromHash() {
   const h = location.hash.replace(/^#\/?/, '');
-  return h ? h.split('/').map(decodeURIComponent) : [];
+  if (!h) return [];
+  return h.split('/').map((s) => {
+    try { return decodeURIComponent(s); } catch { return s; }   // a broken link must not break the app
+  });
 }
 const go = (segs) => { location.hash = '/' + segs.map(encodeURIComponent).join('/'); };
 
 function resolve(segs) {
+  if (!root) return null;                 // events can fire before manifest.json has loaded
   let node = root;
   const trail = [];
   for (const s of segs) {
@@ -67,8 +70,6 @@ function render() {
   renderPreview(file, folder);
 
   $('#btnBack').disabled = folderSegs.length === 0 && !file;
-  $('#vGrid').classList.toggle('on', view === 'grid');
-  $('#vList').classList.toggle('on', view === 'list');
 }
 
 function renderSide(folderSegs) {
@@ -107,9 +108,6 @@ function iconFor(it) {
   if (k === 'img') return '<img class="thumb" loading="lazy" src="' + enc(it.path) + '" alt="">';
   return '<div class="doc ' + k + '"><div class="tag">' + esc((it.ext || 'file').slice(0, 4).toUpperCase()) + '</div></div>';
 }
-function miniFor(it) {
-  return it.type === 'folder' ? MINI_FOLDER : '<span class="mini-doc ' + kind(it.ext) + '"></span>';
-}
 
 function renderItems(folder, folderSegs) {
   const items = itemsFor(folder, folderSegs);
@@ -123,21 +121,12 @@ function renderItems(folder, folderSegs) {
     return;
   }
 
-  if (view === 'grid') {
-    body.innerHTML = '<div class="grid">' + items.map((it, i) =>
-      '<button class="item" style="animation-delay:' + Math.min(i * 18, 300) + 'ms" data-i="' + i + '" title="' + esc(it.type === 'link' ? it.url : (it._where ? it._where + ' / ' + it.name : it.name)) + '">' +
-        '<div class="ico">' + iconFor(it) + '</div>' +
-        '<div class="name">' + esc(it.name) + '</div>' +
-        (query && it._where ? '<div class="sub">' + esc(it._where) + '</div>' : '') +
-      '</button>').join('') + '</div>';
-  } else {
-    body.innerHTML = '<div class="list"><div class="head"><span>Name</span><span>Size</span><span>Date Modified</span></div>' + items.map((it, i) =>
-      '<div class="row" style="animation-delay:' + Math.min(i * 12, 240) + 'ms" data-i="' + i + '">' +
-        '<div class="nm">' + miniFor(it) + '<span>' + esc(it.name) + '</span></div>' +
-        '<span class="dim">' + (it.type === 'folder' ? '—' : it.type === 'link' ? 'Link' : fmtSize(it.size || 0)) + '</span>' +
-        '<span class="dim">' + fmtDate(it.mtime) + '</span>' +
-      '</div>').join('') + '</div>';
-  }
+  body.innerHTML = '<div class="grid">' + items.map((it, i) =>
+    '<button class="item" style="animation-delay:' + Math.min(i * 18, 300) + 'ms" data-i="' + i + '" title="' + esc(it.type === 'link' ? it.url : (it._where ? it._where + ' / ' + it.name : it.name)) + '">' +
+      '<div class="ico">' + iconFor(it) + '</div>' +
+      '<div class="name">' + esc(it.name) + '</div>' +
+      (query && it._where ? '<div class="sub">' + esc(it._where) + '</div>' : '') +
+    '</button>').join('') + '</div>';
 
   body._items = items;
   const folders = items.filter((i) => i.type === 'folder').length;
@@ -146,26 +135,59 @@ function renderItems(folder, folderSegs) {
 }
 
 /* ───────── preview ───────── */
+let pdfCleanup = null;
+let previewSeq = 0;                       // invalidates work started for an older preview
 async function renderPreview(file, folder) {
   const pv = $('#preview');
-  if (!file) { pv.hidden = true; $('#pvStage').innerHTML = ''; return; }
+  const disposePdf = () => { if (pdfCleanup) { try { pdfCleanup(); } catch {} pdfCleanup = null; } };
 
-  pv.hidden = false;
-  $('#pvName').textContent = file.name;
+  if (!file) {
+    previewSeq++;
+    disposePdf();
+    pv.hidden = true;
+    pv.dataset.path = '';
+    $('#pvName').textContent = '';
+    $('#pvStage').innerHTML = '';
+    return;
+  }
+
   const url = enc(file.path);
   const dl = $('#pvDl');
   dl.href = url; dl.setAttribute('download', file.name);
-
   const siblings = (folder.children || []).filter((c) => c.type === 'file');
   const idx = siblings.findIndex((c) => c.path === file.path);
   pv._prev = siblings[idx - 1]; pv._next = siblings[idx + 1];
   $('#pvPrev').disabled = !pv._prev;
   $('#pvNext').disabled = !pv._next;
 
+  /* Re-rendering the same file (e.g. on a search or resize re-render) must not restart the viewer. */
+  if (!pv.hidden && pv.dataset.path === file.path) return;
+  previewSeq++;
+  const seq = previewSeq;
+  const alive = () => seq === previewSeq && !pv.hidden && pv.dataset.path === file.path;
+
+  pv.hidden = false;
+  pv.dataset.path = file.path;
+  $('#pvName').textContent = file.name;
   const stage = $('#pvStage');
+  disposePdf();
   const k = kind(file.ext);
   if (k === 'pdf') {
-    stage.innerHTML = '<iframe title="' + esc(file.name) + '" src="' + url + '#view=FitH"></iframe>';
+    const frame = () => '<iframe title="' + esc(file.name) + '" src="' + url + '#view=FitH"></iframe>';
+    const showFrame = () => { if (alive()) stage.innerHTML = frame(); };
+    if (matchMedia('(max-width: 760px), (pointer: coarse)').matches) {
+      /* phones/tablets: native iframes only show page 1 — use the in-page PDF.js viewer */
+      import('./pdfviewer.js?v=1').then((m) => {
+        if (!alive()) return;
+        pdfCleanup = m.mountPdf(stage, url, file.name, {
+          onFail: () => {
+            if (alive()) stage.innerHTML = '<div class="nofile">Could not display this PDF here.<br><a class="btn-dl" href="' + url + '" target="_blank" rel="noopener">Open in new tab</a></div>';
+          },
+        });
+      }).catch(() => { showFrame(); });
+    } else {
+      stage.innerHTML = frame();
+    }
   } else if (k === 'img') {
     stage.innerHTML = '<img src="' + url + '" alt="' + esc(file.name) + '">';
   } else if (k === 'txt') {
@@ -173,8 +195,8 @@ async function renderPreview(file, folder) {
     try {
       const r = await fetch(url);
       const t = await r.text();
-      if (!$('#preview').hidden && $('#pvName').textContent === file.name) stage.innerHTML = '<pre>' + esc(t) + '</pre>';
-    } catch { stage.innerHTML = '<div class="nofile">Could not load this file.</div>'; }
+      if (alive()) stage.innerHTML = '<pre>' + esc(t) + '</pre>';
+    } catch { if (alive()) stage.innerHTML = '<div class="nofile">Could not load this file.</div>'; }
   } else {
     stage.innerHTML = '<div class="nofile"><div class="doc"><div class="tag">' + esc((file.ext || 'file').toUpperCase().slice(0, 4)) + '</div></div>No preview available for this file type.<br>Use Download to open it.</div>';
   }
@@ -233,8 +255,6 @@ $('#btnBack').addEventListener('click', () => {
   if (segs.length) go(segs.slice(0, -1));
 });
 $('#btnFwd').addEventListener('click', () => history.forward());
-$('#vGrid').addEventListener('click', () => { view = 'grid'; localStorage.setItem('notes-view', view); render(); });
-$('#vList').addEventListener('click', () => { view = 'list'; localStorage.setItem('notes-view', view); render(); });
 
 $('#btnHome').addEventListener('click', () => { query = ''; $('#q').value = ''; go([]); });
 $('#btnMax').addEventListener('click', () => $('#win').classList.toggle('max'));
