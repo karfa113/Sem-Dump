@@ -255,6 +255,9 @@ body {
 @media (max-width: 760px) {
   body { overflow: auto; }
   .stage { padding: 10px; height: 100dvh; }
+  /* keep the item/folder count line, hide only the stats + credit bar */
+  .stage .foot { display: none; }
+  .body { padding: 8px 12px 12px; }
   .window { flex-direction: column; flex: 1 1 auto; min-height: 0; }
   .sidebar {
     width: 100%; flex-direction: row; align-items: center; gap: 6px;
