@@ -178,9 +178,15 @@ export function mountPdf(stage, url, name, { onFail } = {}) {
     try {
       const pdfjs = await loadPdfjs();
       if (dead) return;
-      /* Many notes use non-embedded Arial/Times New Roman. Without this, PDF.js
-         substitutes its own fonts and the text looks different from the PDF. */
-      task = pdfjs.getDocument({ url, withCredentials: false, useSystemFonts: true });
+      /* Render with PDF.js's bundled metric-compatible fonts, like Google Drive.
+         Many notes use non-embedded Arial/Times New Roman; relying on the device's
+         fonts (or letting the browser substitute them) changes the PDF appearance. */
+      task = pdfjs.getDocument({
+        url,
+        withCredentials: false,
+        useSystemFonts: false,
+        standardFontDataUrl: new URL('./vendor/pdfjs/standard_fonts/', import.meta.url).href,
+      });
       task.onProgress = (p) => { if (p.total) prog.style.width = Math.min(100, (p.loaded / p.total) * 100) + '%'; };
       doc = await task.promise;
       if (dead) { doc.destroy(); return; }
