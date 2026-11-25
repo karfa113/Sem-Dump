@@ -178,7 +178,9 @@ export function mountPdf(stage, url, name, { onFail } = {}) {
     try {
       const pdfjs = await loadPdfjs();
       if (dead) return;
-      task = pdfjs.getDocument({ url, withCredentials: false });
+      /* Many notes use non-embedded Arial/Times New Roman. Without this, PDF.js
+         substitutes its own fonts and the text looks different from the PDF. */
+      task = pdfjs.getDocument({ url, withCredentials: false, useSystemFonts: true });
       task.onProgress = (p) => { if (p.total) prog.style.width = Math.min(100, (p.loaded / p.total) * 100) + '%'; };
       doc = await task.promise;
       if (dead) { doc.destroy(); return; }

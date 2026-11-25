@@ -177,7 +177,7 @@ async function renderPreview(file, folder) {
     const showFrame = () => { if (alive()) stage.innerHTML = frame(); };
     if (matchMedia('(max-width: 760px), (pointer: coarse)').matches) {
       /* phones/tablets: native iframes only show page 1 — use the in-page PDF.js viewer */
-      import('./pdfviewer.js?v=1').then((m) => {
+      import('./pdfviewer.js?v=2').then((m) => {
         if (!alive()) return;
         pdfCleanup = m.mountPdf(stage, url, file.name, {
           onFail: () => {
